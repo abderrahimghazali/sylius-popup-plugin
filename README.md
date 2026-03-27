@@ -49,10 +49,10 @@ return [
 ];
 ```
 
-3. Import routes in `config/routes.yaml`:
+3. Import routes — create `config/routes/sylius_popup.yaml`:
 
 ```yaml
-sylius_popup_plugin:
+sylius_popup:
     resource: '@SyliusPopupPlugin/config/routes.yaml'
 ```
 
@@ -63,10 +63,30 @@ bin/console doctrine:migrations:diff
 bin/console doctrine:migrations:migrate
 ```
 
-5. Install JS assets:
+5. Register the Stimulus controller in `assets/shop/controllers.json`:
+
+```json
+{
+    "controllers": {
+        "@abderrahimghazali/sylius-popup-plugin": {
+            "popup": {
+                "enabled": true,
+                "fetch": "eager"
+            }
+        }
+    }
+}
+```
+
+6. Symlink the plugin assets and rebuild:
 
 ```bash
-bin/console assets:install
+# Create the symlink (from your project root)
+mkdir -p node_modules/@abderrahimghazali
+ln -s ../../vendor/abderrahimghazali/sylius-popup-plugin/assets node_modules/@abderrahimghazali/sylius-popup-plugin
+
+# Rebuild assets
+yarn encore dev
 ```
 
 ## Usage

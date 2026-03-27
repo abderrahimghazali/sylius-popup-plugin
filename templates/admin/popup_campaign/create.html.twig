@@ -15,7 +15,7 @@
             <div class="container-xl">
                 {{ breadcrumbs([
                     { name: 'sylius.ui.dashboard', url: path('sylius_admin_dashboard'), active: false },
-                    { name: 'popup.ui.popup_campaigns', url: path('popup_admin_popup_campaign_index'), active: false },
+                    { name: 'popup.ui.popup_campaigns', url: path('popup_admin_campaign_index'), active: false },
                     { name: 'sylius.ui.new', active: true },
                 ]) }}
                 <div class="row mt-3 row-gap-2">
@@ -95,7 +95,7 @@
                     <button type="submit" class="btn btn-primary">
                         {{ 'sylius.ui.create'|trans }}
                     </button>
-                    <a href="{{ path('popup_admin_popup_campaign_index') }}" class="btn btn-outline-secondary">
+                    <a href="{{ path('popup_admin_campaign_index') }}" class="btn btn-outline-secondary">
                         {{ 'sylius.ui.cancel'|trans }}
                     </a>
                 </div>

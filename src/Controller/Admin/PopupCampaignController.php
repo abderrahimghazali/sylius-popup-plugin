@@ -44,7 +44,7 @@ final class PopupCampaignController extends AbstractController
 
             $this->addFlash('success', 'popup.flash.campaign_created');
 
-            return $this->redirectToRoute('popup_admin_popup_campaign_index');
+            return $this->redirectToRoute('popup_admin_campaign_index');
         }
 
         return $this->render('@SyliusPopupPlugin/admin/popup_campaign/create.html.twig', [
@@ -71,7 +71,7 @@ final class PopupCampaignController extends AbstractController
 
             $this->addFlash('success', 'popup.flash.campaign_updated');
 
-            return $this->redirectToRoute('popup_admin_popup_campaign_index');
+            return $this->redirectToRoute('popup_admin_campaign_index');
         }
 
         return $this->render('@SyliusPopupPlugin/admin/popup_campaign/update.html.twig', [

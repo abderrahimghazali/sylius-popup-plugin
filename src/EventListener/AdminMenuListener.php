@@ -20,7 +20,7 @@ final class AdminMenuListener
 
         $marketingMenu
             ->addChild('popup_campaigns', [
-                'route' => 'popup_admin_popup_campaign_index',
+                'route' => 'popup_admin_campaign_index',
             ])
             ->setLabel('popup.ui.popup_campaigns')
             ->setLabelAttribute('icon', 'bullhorn');

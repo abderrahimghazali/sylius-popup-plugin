@@ -10,17 +10,22 @@
 
         {% include '@SyliusAdmin/shared/crud/common/content/flashes.html.twig' %}
 
-        {% from '@SyliusAdmin/shared/helper/breadcrumbs.html.twig' import breadcrumbs %}
         <div class="page-header" data-sticky-header>
             <div class="container-xl">
-                {{ breadcrumbs([
-                    { name: 'sylius.ui.dashboard', url: path('sylius_admin_dashboard'), active: false },
-                    { name: 'popup.ui.popup_campaigns', url: path('popup_admin_campaign_index'), active: false },
-                    { name: campaign.name, active: true },
-                ]) }}
+                <ol class="breadcrumb" aria-label="breadcrumbs">
+                    <li class="breadcrumb-item"><a href="{{ path('sylius_admin_dashboard') }}">{{ 'sylius.ui.dashboard'|trans }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('popup_admin_campaign_index') }}">{{ 'popup.ui.popup_campaigns'|trans }}</a></li>
+                    <li class="breadcrumb-item active">{{ campaign.name }}</li>
+                </ol>
                 <div class="row mt-3 row-gap-2">
-                    <div class="col-12 col-md">
+                    <div class="col-12 col-md-6">
                         <h1 class="page-title">{{ 'popup.ui.edit_campaign'|trans }}</h1>
+                    </div>
+                    <div class="col-12 col-md-6 text-md-end">
+                        <div class="btn-list">
+                            <a href="{{ path('popup_admin_campaign_index') }}" class="btn btn">{{ 'sylius.ui.back'|trans }}</a>
+                            <button type="submit" form="popup_campaign_form" class="btn btn-primary">{{ 'sylius.ui.save'|trans }}</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -29,75 +34,77 @@
         <div class="page-body">
             <div class="container-xl">
                 {% form_theme form '@SyliusAdmin/shared/form_theme.html.twig' %}
-                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'id': 'popup_campaign_form'}}) }}
 
-                <ul class="nav nav-tabs mb-3" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-content" type="button" role="tab">
-                            {{ 'popup.ui.tab_content'|trans }}
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-design" type="button" role="tab">
-                            {{ 'popup.ui.tab_design'|trans }}
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-targeting" type="button" role="tab">
-                            {{ 'popup.ui.tab_targeting'|trans }}
-                        </button>
-                    </li>
-                </ul>
-
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="tab-content" role="tabpanel">
-                        <div class="card">
-                            <div class="card-body">
-                                {{ form_row(form.name) }}
-                                {{ form_row(form.enabled) }}
-                                {{ form_row(form.title) }}
-                                {{ form_row(form.body) }}
-                                {{ form_row(form.ctaLabel) }}
-                                {{ form_row(form.ctaUrl) }}
-                                {{ form_row(form.discountCode) }}
-                                {{ form_row(form.emailCaptureEnabled) }}
+                <div class="row">
+                    <div class="col-12 col-lg-3">
+                        <div class="sticky-md-top">
+                            <div class="list-group bg-white mb-5" role="tablist">
+                                <button type="button" class="list-group-item list-group-item-action active" data-bs-toggle="tab" data-bs-target="#tab-content" role="tab" aria-selected="true">
+                                    {{ 'popup.ui.tab_content'|trans }}
+                                </button>
+                                <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="tab" data-bs-target="#tab-design" role="tab">
+                                    {{ 'popup.ui.tab_design'|trans }}
+                                </button>
+                                <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="tab" data-bs-target="#tab-targeting" role="tab">
+                                    {{ 'popup.ui.tab_targeting'|trans }}
+                                </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tab-pane fade" id="tab-design" role="tabpanel">
-                        <div class="card">
-                            <div class="card-body">
-                                {{ form_row(form.style) }}
-                                {{ form_row(form.backgroundColor) }}
-                                {{ form_row(form.textColor) }}
-                                {{ form_row(form.buttonColor) }}
+                    <div class="col-12 col-lg-9">
+                        <div class="tab-content">
+                            <div class="tab-pane show active" id="tab-content" role="tabpanel">
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        <h2 class="card-title">{{ 'popup.ui.tab_content'|trans }}</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        {{ form_row(form.name) }}
+                                        {{ form_row(form.enabled) }}
+                                        {{ form_row(form.title) }}
+                                        {{ form_row(form.body) }}
+                                        {{ form_row(form.ctaLabel) }}
+                                        {{ form_row(form.ctaUrl) }}
+                                        {{ form_row(form.discountCode) }}
+                                        {{ form_row(form.emailCaptureEnabled) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="tab-design" role="tabpanel">
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        <h2 class="card-title">{{ 'popup.ui.tab_design'|trans }}</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        {{ form_row(form.style) }}
+                                        {{ form_row(form.backgroundColor) }}
+                                        {{ form_row(form.textColor) }}
+                                        {{ form_row(form.buttonColor) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="tab-targeting" role="tabpanel">
+                                <div class="card mb-3">
+                                    <div class="card-header">
+                                        <h2 class="card-title">{{ 'popup.ui.tab_targeting'|trans }}</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        {{ form_row(form.triggerType) }}
+                                        {{ form_row(form.triggerDelay) }}
+                                        {{ form_row(form.triggerScrollDepth) }}
+                                        {{ form_row(form.showFrequency) }}
+                                        {{ form_row(form.targetPages) }}
+                                        {{ form_row(form.targetAudience) }}
+                                        {{ form_row(form.priority) }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="tab-pane fade" id="tab-targeting" role="tabpanel">
-                        <div class="card">
-                            <div class="card-body">
-                                {{ form_row(form.triggerType) }}
-                                {{ form_row(form.triggerDelay) }}
-                                {{ form_row(form.triggerScrollDepth) }}
-                                {{ form_row(form.showFrequency) }}
-                                {{ form_row(form.targetPages) }}
-                                {{ form_row(form.targetAudience) }}
-                                {{ form_row(form.priority) }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="d-flex gap-2 mt-3">
-                    <button type="submit" class="btn btn-primary">
-                        {{ 'sylius.ui.save'|trans }}
-                    </button>
-                    <a href="{{ path('popup_admin_campaign_index') }}" class="btn btn-outline-secondary">
-                        {{ 'sylius.ui.cancel'|trans }}
-                    </a>
                 </div>
 
                 {{ form_end(form) }}

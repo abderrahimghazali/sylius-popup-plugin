@@ -1,0 +1,38 @@
+sylius_twig_hooks:
+    hooks:
+        # Form layout: side navigation + sections
+        'sylius_popup.campaign.form':
+            side_navigation:
+                template: '@SyliusPopupPlugin/admin/popup_campaign/form/side_navigation.html.twig'
+                priority: 100
+            sections:
+                template: '@SyliusPopupPlugin/admin/popup_campaign/form/sections.html.twig'
+                priority: 0
+
+        # Side navigation tabs
+        'sylius_popup.campaign.form.side_navigation':
+            content:
+                template: '@SyliusPopupPlugin/admin/popup_campaign/form/side_navigation/content.html.twig'
+                configuration:
+                    active: true
+                priority: 300
+            design:
+                template: '@SyliusPopupPlugin/admin/popup_campaign/form/side_navigation/design.html.twig'
+                priority: 200
+            targeting:
+                template: '@SyliusPopupPlugin/admin/popup_campaign/form/side_navigation/targeting.html.twig'
+                priority: 100
+
+        # Form sections (tab panes)
+        'sylius_popup.campaign.form.sections':
+            content:
+                template: '@SyliusPopupPlugin/admin/popup_campaign/form/sections/content.html.twig'
+                configuration:
+                    active: true
+                priority: 300
+            design:
+                template: '@SyliusPopupPlugin/admin/popup_campaign/form/sections/design.html.twig'
+                priority: 200
+            targeting:
+                template: '@SyliusPopupPlugin/admin/popup_campaign/form/sections/targeting.html.twig'
+                priority: 100

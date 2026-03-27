@@ -1,0 +1,16 @@
+<div class="tab-pane {% if hookable_metadata.configuration.active|default(false) %}show active{% endif %}" id="popup-targeting" role="tabpanel" tabindex="0">
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 class="card-title">{{ 'popup.ui.tab_targeting'|trans }}</h2>
+        </div>
+        <div class="card-body">
+            {{ form_row(form.triggerType) }}
+            {{ form_row(form.triggerDelay) }}
+            {{ form_row(form.triggerScrollDepth) }}
+            {{ form_row(form.showFrequency) }}
+            {{ form_row(form.targetPages) }}
+            {{ form_row(form.targetAudience) }}
+            {{ form_row(form.priority) }}
+        </div>
+    </div>
+</div>

@@ -30,6 +30,7 @@ final class SyliusPopupExtension extends Extension implements PrependExtensionIn
 
         // Twig hooks
         $loader->load('twig_hooks/shop.yaml');
+        $loader->load('twig_hooks/admin/popup_campaign.yaml');
 
         // Framework config (rate limiter)
         $loader->load('config.yaml');

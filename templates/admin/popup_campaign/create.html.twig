@@ -18,7 +18,7 @@
                     <li class="breadcrumb-item active">{{ 'sylius.ui.new'|trans }}</li>
                 </ol>
                 <div class="row mt-3 row-gap-2">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md">
                         <h1 class="page-title">{{ 'popup.ui.new_campaign'|trans }}</h1>
                     </div>
                     <div class="col-12 col-md-auto ms-auto d-print-none">
@@ -37,77 +37,10 @@
                 {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'id': 'popup_campaign_form'}}) }}
 
                 <div class="row">
-                    <div class="col-12 col-lg-3">
-                        <div class="sticky-md-top">
-                            <div class="list-group bg-white mb-5" role="tablist">
-                                <button type="button" class="list-group-item list-group-item-action active" data-bs-toggle="tab" data-bs-target="#tab-content" role="tab" aria-selected="true">
-                                    {{ 'popup.ui.tab_content'|trans }}
-                                </button>
-                                <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="tab" data-bs-target="#tab-design" role="tab">
-                                    {{ 'popup.ui.tab_design'|trans }}
-                                </button>
-                                <button type="button" class="list-group-item list-group-item-action" data-bs-toggle="tab" data-bs-target="#tab-targeting" role="tab">
-                                    {{ 'popup.ui.tab_targeting'|trans }}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-lg-9">
-                        <div class="tab-content">
-                            <div class="tab-pane show active" id="tab-content" role="tabpanel">
-                                <div class="card mb-3">
-                                    <div class="card-header">
-                                        <h2 class="card-title">{{ 'popup.ui.tab_content'|trans }}</h2>
-                                    </div>
-                                    <div class="card-body">
-                                        {{ form_row(form.name) }}
-                                        {{ form_row(form.enabled) }}
-                                        {{ form_row(form.title) }}
-                                        {{ form_row(form.body) }}
-                                        {{ form_row(form.ctaLabel) }}
-                                        {{ form_row(form.ctaUrl) }}
-                                        {{ form_row(form.discountCode) }}
-                                        {{ form_row(form.emailCaptureEnabled) }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane" id="tab-design" role="tabpanel">
-                                <div class="card mb-3">
-                                    <div class="card-header">
-                                        <h2 class="card-title">{{ 'popup.ui.tab_design'|trans }}</h2>
-                                    </div>
-                                    <div class="card-body">
-                                        {{ form_row(form.style) }}
-                                        {{ form_row(form.backgroundColor) }}
-                                        {{ form_row(form.textColor) }}
-                                        {{ form_row(form.buttonColor) }}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane" id="tab-targeting" role="tabpanel">
-                                <div class="card mb-3">
-                                    <div class="card-header">
-                                        <h2 class="card-title">{{ 'popup.ui.tab_targeting'|trans }}</h2>
-                                    </div>
-                                    <div class="card-body">
-                                        {{ form_row(form.triggerType) }}
-                                        {{ form_row(form.triggerDelay) }}
-                                        {{ form_row(form.triggerScrollDepth) }}
-                                        {{ form_row(form.showFrequency) }}
-                                        {{ form_row(form.targetPages) }}
-                                        {{ form_row(form.targetAudience) }}
-                                        {{ form_row(form.priority) }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% hook 'sylius_popup.campaign.form' with { form: form } %}
                 </div>
 
-                {{ form_end(form) }}
+                {{ form_end(form, {render_rest: false}) }}
             </div>
         </div>
 

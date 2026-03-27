@@ -1,5 +1,7 @@
 popup:
     ui:
+        campaigns: Popup Campaigns
+        campaign: Popup Campaign
         popup_campaigns: Popup Campaigns
         new_campaign: New Popup Campaign
         edit_campaign: Edit Popup Campaign

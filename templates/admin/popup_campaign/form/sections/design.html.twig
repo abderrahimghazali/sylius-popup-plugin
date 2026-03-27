@@ -1,0 +1,13 @@
+<div class="tab-pane {% if hookable_metadata.configuration.active|default(false) %}show active{% endif %}" id="popup-design" role="tabpanel" tabindex="0">
+    <div class="card mb-3">
+        <div class="card-header">
+            <h2 class="card-title">{{ 'popup.ui.tab_design'|trans }}</h2>
+        </div>
+        <div class="card-body">
+            {{ form_row(form.style) }}
+            {{ form_row(form.backgroundColor) }}
+            {{ form_row(form.textColor) }}
+            {{ form_row(form.buttonColor) }}
+        </div>
+    </div>
+</div>

@@ -1,11 +1,28 @@
-# Sylius Popup Plugin
+<p align="center">
+    <a href="https://sylius.com" target="_blank">
+        <picture>
+            <source media="(prefers-color-scheme: dark)" srcset="https://media.sylius.com/sylius-logo-800-dark.png">
+            <source media="(prefers-color-scheme: light)" srcset="https://media.sylius.com/sylius-logo-800.png">
+            <img alt="Sylius Logo" src="https://media.sylius.com/sylius-logo-800.png" width="300"/>
+        </picture>
+    </a>
+</p>
 
-Exit-intent & engagement popup system for Sylius 2.x stores, fully managed from the admin panel.
+<h1 align="center">Sylius Popup Plugin</h1>
 
-![Sylius](https://img.shields.io/badge/Sylius-2.x-blue)
-![PHP](https://img.shields.io/badge/PHP-8.2%2B-purple)
-![Symfony](https://img.shields.io/badge/Symfony-7.x-black)
-![License](https://img.shields.io/badge/License-MIT-green)
+<p align="center">
+    Exit-intent & engagement popup system for <a href="https://sylius.com">Sylius 2.x</a> stores, fully managed from the admin panel.
+</p>
+
+<p align="center">
+    <a href="https://packagist.org/packages/abderrahimghazali/sylius-popup-plugin"><img src="https://img.shields.io/packagist/v/abderrahimghazali/sylius-popup-plugin.svg" alt="Latest Version"/></a>
+    <a href="https://packagist.org/packages/abderrahimghazali/sylius-popup-plugin"><img src="https://img.shields.io/packagist/php-v/abderrahimghazali/sylius-popup-plugin.svg" alt="PHP Version"/></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"/></a>
+    <a href="https://packagist.org/packages/abderrahimghazali/sylius-popup-plugin"><img src="https://img.shields.io/badge/sylius-2.x-green.svg" alt="Sylius 2.x"/></a>
+    <a href="https://packagist.org/packages/abderrahimghazali/sylius-popup-plugin"><img src="https://img.shields.io/badge/symfony-7.x-black.svg" alt="Symfony 7.x"/></a>
+</p>
+
+---
 
 ## Screenshots
 

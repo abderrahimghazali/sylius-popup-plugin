@@ -11,6 +11,10 @@ sylius_grid:
             sorting:
                 priority: desc
             fields:
+                priority:
+                    type: string
+                    label: popup.form.priority
+                    sortable: ~
                 name:
                     type: string
                     label: popup.ui.name

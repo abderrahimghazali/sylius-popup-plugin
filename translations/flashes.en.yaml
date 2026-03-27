@@ -1,0 +1,4 @@
+popup:
+    flash:
+        campaign_created: Popup campaign has been created successfully.
+        campaign_updated: Popup campaign has been updated successfully.

@@ -1,6 +1,6 @@
 sylius_twig_hooks:
     hooks:
-        'sylius_shop.layout.after_body':
+        'sylius_shop.base.footer':
             popup:
                 template: '@SyliusPopupPlugin/shop/popup_renderer.html.twig'
-                priority: 10
+                priority: 0

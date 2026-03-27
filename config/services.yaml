@@ -11,6 +11,7 @@ services:
             - '../src/Entity/'
             - '../src/Enum/'
             - '../src/DependencyInjection/'
+            - '../src/Form/'
 
     # Repository alias
     Abderrahim\SyliusPopupPlugin\Repository\PopupCampaignRepositoryInterface:

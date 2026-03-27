@@ -1,0 +1,43 @@
+popup:
+    ui:
+        popup_campaigns: Popup Campaigns
+        new_campaign: New Popup Campaign
+        edit_campaign: Edit Popup Campaign
+        manage_popup_campaigns: Manage your popup campaigns
+        tab_content: Content
+        tab_design: Design
+        tab_targeting: Targeting
+        name: Name
+        trigger_type: Trigger Type
+        style: Style
+        copy_code: Copy code
+        copied: Copied!
+        email_placeholder: Enter your email...
+        subscribe: Subscribe
+        thank_you: Thank you for subscribing!
+    form:
+        name: Name (admin label)
+        title: Popup Title
+        body: Body Text
+        cta_label: CTA Button Label
+        cta_url: CTA URL
+        discount_code: Discount Code
+        discount_code_help: If filled, a copyable discount code will be displayed in the popup.
+        email_capture_enabled: Enable Email Capture
+        style: Popup Style
+        background_color: Background Color
+        text_color: Text Color
+        button_color: Button Color
+        trigger_type: Trigger Type
+        trigger_delay: Trigger Delay (seconds)
+        trigger_delay_help: Number of seconds before showing the popup (used for "Time on Page" trigger).
+        trigger_scroll_depth: Scroll Depth (%)
+        trigger_scroll_depth_help: Percentage of page scrolled before showing the popup (used for "Scroll Depth" trigger).
+        show_frequency: Show Frequency
+        target_pages: Target Pages
+        target_audience: Target Audience
+        priority: Priority
+        priority_help: Higher priority popups are shown first when multiple match.
+    flash:
+        campaign_created: Popup campaign has been created successfully.
+        campaign_updated: Popup campaign has been updated successfully.

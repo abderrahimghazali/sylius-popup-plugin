@@ -1,0 +1,162 @@
+{% set popups = popup_renderer_get_popups(app.request) %}
+
+{% if popups|length > 0 %}
+<style>
+    .sylius-popup-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: rgba(0, 0, 0, 0.5);
+        align-items: center;
+        justify-content: center;
+    }
+    .sylius-popup-overlay--modal {
+        display: none;
+    }
+    .sylius-popup-overlay.sylius-popup--visible {
+        display: flex;
+    }
+    .sylius-popup-card {
+        position: relative;
+        max-width: 480px;
+        width: 90%;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+    .sylius-popup-close {
+        position: absolute;
+        top: 0.75rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        line-height: 1;
+        opacity: 0.7;
+    }
+    .sylius-popup-close:hover {
+        opacity: 1;
+    }
+    .sylius-popup-title {
+        margin: 0 0 0.75rem;
+        font-size: 1.5rem;
+    }
+    .sylius-popup-body {
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+    .sylius-popup-discount {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .sylius-popup-discount-code {
+        padding: 0.4rem 0.75rem;
+        background: rgba(0, 0, 0, 0.08);
+        border-radius: 4px;
+        font-size: 1.1rem;
+        letter-spacing: 0.05em;
+    }
+    .sylius-popup-copy-btn,
+    .sylius-popup-email-submit,
+    .sylius-popup-cta {
+        display: inline-block;
+        padding: 0.5rem 1.25rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.2s;
+    }
+    .sylius-popup-copy-btn:hover,
+    .sylius-popup-email-submit:hover,
+    .sylius-popup-cta:hover {
+        opacity: 0.85;
+    }
+    .sylius-popup-copy-feedback {
+        font-size: 0.85rem;
+        color: #16a34a;
+    }
+    .sylius-popup-email-form,
+    .sylius-popup-bar-email-form {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+    }
+    .sylius-popup-email-input {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 6px;
+        font-size: 0.9rem;
+        min-width: 200px;
+    }
+    .sylius-popup-thank-you {
+        color: #16a34a;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    .sylius-popup-cta {
+        display: inline-block;
+        margin-top: 0.5rem;
+    }
+
+    /* Bottom bar styles */
+    .sylius-popup-bar {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 99999;
+        padding: 1rem 1.5rem;
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    }
+    .sylius-popup-bar.sylius-popup--visible {
+        display: block;
+    }
+    .sylius-popup-bar-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .sylius-popup-bar-text {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .sylius-popup-bar-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .sylius-popup-bar .sylius-popup-close {
+        position: static;
+        font-size: 1.25rem;
+        margin-left: 0.5rem;
+    }
+</style>
+
+{% for popup in popups %}
+    {% if popup.style.value == 'modal' %}
+        {% include '@SyliusPopupPlugin/shop/popup_modal.html.twig' with {popup: popup, has_cart: has_cart|default(false)} %}
+    {% else %}
+        {% include '@SyliusPopupPlugin/shop/popup_bar.html.twig' with {popup: popup, has_cart: has_cart|default(false)} %}
+    {% endif %}
+{% endfor %}
+{% endif %}

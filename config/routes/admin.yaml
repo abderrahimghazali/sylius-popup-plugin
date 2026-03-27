@@ -1,0 +1,38 @@
+popup_admin_popup_campaign:
+    resource: |
+        alias: popup.campaign
+        section: admin
+        grid: popup_admin_popup_campaign
+        templates: '@SyliusAdmin/shared/crud'
+        only: ['index', 'delete']
+        vars:
+            all:
+                subheader: popup.ui.manage_popup_campaigns
+            index:
+                icon: bullhorn
+    type: sylius.resource
+    prefix: /popup-campaigns
+
+popup_admin_popup_campaign_create:
+    path: /popup-campaigns/new
+    controller: Abderrahim\SyliusPopupPlugin\Controller\Admin\PopupCampaignController::createAction
+    methods: [GET, POST]
+    defaults:
+        _sylius:
+            permission: true
+
+popup_admin_popup_campaign_update:
+    path: /popup-campaigns/{id}/edit
+    controller: Abderrahim\SyliusPopupPlugin\Controller\Admin\PopupCampaignController::updateAction
+    methods: [GET, PUT, POST]
+    defaults:
+        _sylius:
+            permission: true
+
+popup_admin_popup_campaign_toggle:
+    path: /popup-campaigns/{id}/toggle
+    controller: Abderrahim\SyliusPopupPlugin\Controller\Admin\PopupCampaignController::toggleAction
+    methods: [PATCH]
+    defaults:
+        _sylius:
+            permission: true

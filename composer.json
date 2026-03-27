@@ -1,0 +1,44 @@
+{
+    "name": "abderrahimghazali/sylius-popup-plugin",
+    "type": "sylius-plugin",
+    "description": "Exit-intent & engagement popup system for Sylius 2.x stores, fully managed from the admin panel.",
+    "license": "MIT",
+    "keywords": [
+        "sylius",
+        "sylius-plugin",
+        "popup",
+        "exit-intent",
+        "engagement",
+        "marketing"
+    ],
+    "require": {
+        "php": "^8.2",
+        "symfony/framework-bundle": "^7.0",
+        "symfony/stimulus-bundle": "^2.0",
+        "symfony/rate-limiter": "^7.0",
+        "doctrine/orm": "^2.17 || ^3.0",
+        "sylius/sylius": "^2.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "symfony/test-pack": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Abderrahim\\SyliusPopupPlugin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Abderrahim\\SyliusPopupPlugin\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

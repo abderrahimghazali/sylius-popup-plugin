@@ -1,0 +1,9 @@
+sylius_resource:
+    resources:
+        popup.campaign:
+            driver: doctrine/orm
+            classes:
+                model: Abderrahim\SyliusPopupPlugin\Entity\PopupCampaign
+                interface: Abderrahim\SyliusPopupPlugin\Entity\PopupCampaignInterface
+                repository: Abderrahim\SyliusPopupPlugin\Repository\PopupCampaignRepository
+                form: Abderrahim\SyliusPopupPlugin\Form\Type\PopupCampaignType

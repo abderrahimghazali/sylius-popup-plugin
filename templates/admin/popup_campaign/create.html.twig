@@ -1,0 +1,109 @@
+{% extends '@SyliusAdmin/shared/layout/base.html.twig' %}
+
+{% block title %}{{ 'popup.ui.new_campaign'|trans }} | {{ parent() }}{% endblock %}
+
+{% block body %}
+    {% include '@SyliusAdmin/shared/crud/common/sidebar.html.twig' %}
+
+    <div class="page-wrapper">
+        {% include '@SyliusAdmin/shared/crud/common/navbar.html.twig' %}
+
+        {% include '@SyliusAdmin/shared/crud/common/content/flashes.html.twig' %}
+
+        {% from '@SyliusAdmin/shared/helper/breadcrumbs.html.twig' import breadcrumbs %}
+        <div class="page-header" data-sticky-header>
+            <div class="container-xl">
+                {{ breadcrumbs([
+                    { name: 'sylius.ui.dashboard', url: path('sylius_admin_dashboard'), active: false },
+                    { name: 'popup.ui.popup_campaigns', url: path('popup_admin_popup_campaign_index'), active: false },
+                    { name: 'sylius.ui.new', active: true },
+                ]) }}
+                <div class="row mt-3 row-gap-2">
+                    <div class="col-12 col-md">
+                        <h1 class="page-title">{{ 'popup.ui.new_campaign'|trans }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-body">
+            <div class="container-xl">
+                {% form_theme form '@SyliusAdmin/shared/form_theme.html.twig' %}
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                <ul class="nav nav-tabs mb-3" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-content" type="button" role="tab">
+                            {{ 'popup.ui.tab_content'|trans }}
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-design" type="button" role="tab">
+                            {{ 'popup.ui.tab_design'|trans }}
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-targeting" type="button" role="tab">
+                            {{ 'popup.ui.tab_targeting'|trans }}
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="tab-content" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                {{ form_row(form.name) }}
+                                {{ form_row(form.enabled) }}
+                                {{ form_row(form.title) }}
+                                {{ form_row(form.body) }}
+                                {{ form_row(form.ctaLabel) }}
+                                {{ form_row(form.ctaUrl) }}
+                                {{ form_row(form.discountCode) }}
+                                {{ form_row(form.emailCaptureEnabled) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-design" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                {{ form_row(form.style) }}
+                                {{ form_row(form.backgroundColor) }}
+                                {{ form_row(form.textColor) }}
+                                {{ form_row(form.buttonColor) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab-targeting" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                {{ form_row(form.triggerType) }}
+                                {{ form_row(form.triggerDelay) }}
+                                {{ form_row(form.triggerScrollDepth) }}
+                                {{ form_row(form.showFrequency) }}
+                                {{ form_row(form.targetPages) }}
+                                {{ form_row(form.targetAudience) }}
+                                {{ form_row(form.priority) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-3">
+                    <button type="submit" class="btn btn-primary">
+                        {{ 'sylius.ui.create'|trans }}
+                    </button>
+                    <a href="{{ path('popup_admin_popup_campaign_index') }}" class="btn btn-outline-secondary">
+                        {{ 'sylius.ui.cancel'|trans }}
+                    </a>
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+        {% include '@SyliusAdmin/shared/crud/common/content/footer.html.twig' %}
+    </div>
+{% endblock %}

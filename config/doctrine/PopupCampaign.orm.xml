@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="Abderrahim\SyliusPopupPlugin\Entity\PopupCampaign" table="popup_campaign">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="name" column="name" type="string" length="255" nullable="false"/>
+        <field name="enabled" column="enabled" type="boolean" nullable="false">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+
+        <field name="title" column="title" type="string" length="255" nullable="false"/>
+        <field name="body" column="body" type="text" nullable="true"/>
+
+        <field name="ctaLabel" column="cta_label" type="string" length="255" nullable="true"/>
+        <field name="ctaUrl" column="cta_url" type="string" length="512" nullable="true"/>
+        <field name="discountCode" column="discount_code" type="string" length="255" nullable="true"/>
+        <field name="emailCaptureEnabled" column="email_capture_enabled" type="boolean" nullable="false">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+
+        <field name="style" column="style" type="string" length="20" nullable="false"
+               enum-type="Abderrahim\SyliusPopupPlugin\Enum\PopupStyle">
+            <options>
+                <option name="default">modal</option>
+            </options>
+        </field>
+
+        <field name="backgroundColor" column="background_color" type="string" length="7" nullable="false">
+            <options>
+                <option name="default">#ffffff</option>
+            </options>
+        </field>
+        <field name="textColor" column="text_color" type="string" length="7" nullable="false">
+            <options>
+                <option name="default">#111111</option>
+            </options>
+        </field>
+        <field name="buttonColor" column="button_color" type="string" length="7" nullable="false">
+            <options>
+                <option name="default">#000000</option>
+            </options>
+        </field>
+
+        <field name="triggerType" column="trigger_type" type="string" length="30" nullable="false"
+               enum-type="Abderrahim\SyliusPopupPlugin\Enum\TriggerType">
+            <options>
+                <option name="default">exit_intent</option>
+            </options>
+        </field>
+        <field name="triggerDelay" column="trigger_delay" type="integer" nullable="false">
+            <options>
+                <option name="default">5</option>
+            </options>
+        </field>
+        <field name="triggerScrollDepth" column="trigger_scroll_depth" type="integer" nullable="false">
+            <options>
+                <option name="default">50</option>
+            </options>
+        </field>
+
+        <field name="showFrequency" column="show_frequency" type="string" length="20" nullable="false"
+               enum-type="Abderrahim\SyliusPopupPlugin\Enum\ShowFrequency">
+            <options>
+                <option name="default">session</option>
+            </options>
+        </field>
+
+        <field name="targetPages" column="target_pages" type="string" length="20" nullable="false"
+               enum-type="Abderrahim\SyliusPopupPlugin\Enum\TargetPages">
+            <options>
+                <option name="default">all</option>
+            </options>
+        </field>
+        <field name="targetAudience" column="target_audience" type="string" length="20" nullable="false"
+               enum-type="Abderrahim\SyliusPopupPlugin\Enum\TargetAudience">
+            <options>
+                <option name="default">everyone</option>
+            </options>
+        </field>
+
+        <field name="priority" column="priority" type="integer" nullable="false">
+            <options>
+                <option name="default">0</option>
+            </options>
+        </field>
+
+        <field name="createdAt" column="created_at" type="datetime_immutable" nullable="true"/>
+        <field name="updatedAt" column="updated_at" type="datetime_immutable" nullable="true"/>
+    </mapped-superclass>
+
+</doctrine-mapping>

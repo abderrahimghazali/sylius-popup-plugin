@@ -1,0 +1,53 @@
+sylius_grid:
+    grids:
+        popup_admin_popup_campaign:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: '%popup.model.campaign.class%'
+                    repository:
+                        method: createQueryBuilder
+                        arguments: ['pc']
+            sorting:
+                priority: desc
+            fields:
+                name:
+                    type: string
+                    label: popup.ui.name
+                    sortable: ~
+                triggerType:
+                    type: twig
+                    label: popup.ui.trigger_type
+                    sortable: ~
+                    options:
+                        template: '@SyliusPopupPlugin/admin/popup_campaign/field/trigger_type.html.twig'
+                style:
+                    type: twig
+                    label: popup.ui.style
+                    sortable: ~
+                    options:
+                        template: '@SyliusPopupPlugin/admin/popup_campaign/field/style.html.twig'
+                enabled:
+                    type: twig
+                    label: sylius.ui.enabled
+                    sortable: ~
+                    options:
+                        template: '@SyliusAdmin/shared/grid/field/enabled.html.twig'
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [name, title]
+                enabled:
+                    type: boolean
+                    label: sylius.ui.enabled
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

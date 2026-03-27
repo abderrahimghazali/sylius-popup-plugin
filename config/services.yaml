@@ -1,0 +1,44 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Abderrahim\SyliusPopupPlugin\:
+        resource: '../src/'
+        exclude:
+            - '../src/SyliusPopupPlugin.php'
+            - '../src/Entity/'
+            - '../src/Enum/'
+            - '../src/DependencyInjection/'
+
+    # Repository alias
+    Abderrahim\SyliusPopupPlugin\Repository\PopupCampaignRepositoryInterface:
+        alias: popup.repository.campaign
+
+    # Admin menu listener
+    Abderrahim\SyliusPopupPlugin\EventListener\AdminMenuListener:
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addPopupMenu }
+
+    # Admin controller
+    Abderrahim\SyliusPopupPlugin\Controller\Admin\PopupCampaignController:
+        public: true
+        arguments:
+            $popupCampaignFactory: '@popup.factory.campaign'
+            $popupCampaignRepository: '@popup.repository.campaign'
+
+    # Shop API controller
+    Abderrahim\SyliusPopupPlugin\Controller\Shop\PopupSubscribeController:
+        public: true
+        arguments:
+            $popupCampaignRepository: '@popup.repository.campaign'
+
+    # PopupRenderer service
+    Abderrahim\SyliusPopupPlugin\Service\PopupRenderer:
+        arguments:
+            $popupCampaignRepository: '@popup.repository.campaign'
+
+    # Twig extension
+    Abderrahim\SyliusPopupPlugin\Twig\PopupRendererExtension:
+        tags: ['twig.extension']

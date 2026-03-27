@@ -1,0 +1,6 @@
+popup_shop_subscribe:
+    path: /api/v2/shop/popup/{id}/subscribe
+    controller: Abderrahim\SyliusPopupPlugin\Controller\Shop\PopupSubscribeController::__invoke
+    methods: [POST]
+    defaults:
+        _format: json

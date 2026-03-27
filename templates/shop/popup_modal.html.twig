@@ -1,0 +1,83 @@
+<div
+    data-controller="abderrahimghazali--sylius-popup-plugin--popup"
+    data-abderrahimghazali--sylius-popup-plugin--popup-popup-id-value="{{ popup.id }}"
+    data-abderrahimghazali--sylius-popup-plugin--popup-trigger-type-value="{{ popup.triggerType.value }}"
+    data-abderrahimghazali--sylius-popup-plugin--popup-trigger-delay-value="{{ popup.triggerDelay }}"
+    data-abderrahimghazali--sylius-popup-plugin--popup-scroll-depth-value="{{ popup.triggerScrollDepth }}"
+    data-abderrahimghazali--sylius-popup-plugin--popup-show-frequency-value="{{ popup.showFrequency.value }}"
+    data-abderrahimghazali--sylius-popup-plugin--popup-subscribe-url-value="{{ path('popup_shop_subscribe', {id: popup.id}) }}"
+    data-abderrahimghazali--sylius-popup-plugin--popup-has-cart-value="{{ has_cart ? 'true' : 'false' }}"
+>
+    <div
+        class="sylius-popup-overlay sylius-popup-overlay--modal"
+        data-abderrahimghazali--sylius-popup-plugin--popup-target="overlay"
+    >
+        <div class="sylius-popup-card" style="background-color: {{ popup.backgroundColor }}; color: {{ popup.textColor }};">
+            <button
+                type="button"
+                class="sylius-popup-close"
+                data-action="abderrahimghazali--sylius-popup-plugin--popup#hide"
+                style="color: {{ popup.textColor }};"
+                aria-label="{{ 'sylius.ui.close'|trans }}"
+            >&times;</button>
+
+            <h2 class="sylius-popup-title">{{ popup.title }}</h2>
+
+            {% if popup.body %}
+                <div class="sylius-popup-body">{{ popup.body|nl2br }}</div>
+            {% endif %}
+
+            {% if popup.discountCode %}
+                <div class="sylius-popup-discount">
+                    <code class="sylius-popup-discount-code">{{ popup.discountCode }}</code>
+                    <button
+                        type="button"
+                        class="sylius-popup-copy-btn"
+                        style="background-color: {{ popup.buttonColor }}; color: {{ popup.backgroundColor }};"
+                        data-action="abderrahimghazali--sylius-popup-plugin--popup#copyCode"
+                        data-code="{{ popup.discountCode }}"
+                    >{{ 'popup.ui.copy_code'|trans }}</button>
+                    <span
+                        class="sylius-popup-copy-feedback"
+                        data-abderrahimghazali--sylius-popup-plugin--popup-target="copyFeedback"
+                        data-success-text="{{ 'popup.ui.copied'|trans }}"
+                    ></span>
+                </div>
+            {% endif %}
+
+            {% if popup.emailCaptureEnabled %}
+                <form
+                    class="sylius-popup-email-form"
+                    data-abderrahimghazali--sylius-popup-plugin--popup-target="emailForm"
+                    data-action="submit->abderrahimghazali--sylius-popup-plugin--popup#submitEmail"
+                >
+                    <input
+                        type="email"
+                        class="sylius-popup-email-input"
+                        placeholder="{{ 'popup.ui.email_placeholder'|trans }}"
+                        required
+                        data-abderrahimghazali--sylius-popup-plugin--popup-target="emailInput"
+                    />
+                    <button
+                        type="submit"
+                        class="sylius-popup-email-submit"
+                        style="background-color: {{ popup.buttonColor }}; color: {{ popup.backgroundColor }};"
+                    >{{ 'popup.ui.subscribe'|trans }}</button>
+                </form>
+                <div
+                    class="sylius-popup-thank-you"
+                    style="display: none;"
+                    data-abderrahimghazali--sylius-popup-plugin--popup-target="thankYou"
+                >{{ 'popup.ui.thank_you'|trans }}</div>
+            {% endif %}
+
+            {% if popup.ctaLabel and popup.ctaUrl %}
+                <a
+                    href="{{ popup.ctaUrl }}"
+                    class="sylius-popup-cta"
+                    style="background-color: {{ popup.buttonColor }}; color: {{ popup.backgroundColor }};"
+                >{{ popup.ctaLabel }}</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

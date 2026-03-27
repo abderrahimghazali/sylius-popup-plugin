@@ -1,0 +1,43 @@
+popup:
+    ui:
+        popup_campaigns: Campagnes Popup
+        new_campaign: Nouvelle Campagne Popup
+        edit_campaign: Modifier la Campagne Popup
+        manage_popup_campaigns: Gérer vos campagnes popup
+        tab_content: Contenu
+        tab_design: Design
+        tab_targeting: Ciblage
+        name: Nom
+        trigger_type: Type de déclencheur
+        style: Style
+        copy_code: Copier le code
+        copied: Copié !
+        email_placeholder: Entrez votre email...
+        subscribe: S'abonner
+        thank_you: Merci pour votre inscription !
+    form:
+        name: Nom (libellé admin)
+        title: Titre du Popup
+        body: Texte du corps
+        cta_label: Libellé du bouton CTA
+        cta_url: URL du CTA
+        discount_code: Code de réduction
+        discount_code_help: Si rempli, un code de réduction copiable sera affiché dans le popup.
+        email_capture_enabled: Activer la capture d'email
+        style: Style du Popup
+        background_color: Couleur de fond
+        text_color: Couleur du texte
+        button_color: Couleur du bouton
+        trigger_type: Type de déclencheur
+        trigger_delay: Délai de déclenchement (secondes)
+        trigger_delay_help: Nombre de secondes avant d'afficher le popup (utilisé pour le déclencheur "Temps sur la page").
+        trigger_scroll_depth: Profondeur de défilement (%)
+        trigger_scroll_depth_help: Pourcentage de la page défilée avant d'afficher le popup (utilisé pour le déclencheur "Profondeur de défilement").
+        show_frequency: Fréquence d'affichage
+        target_pages: Pages cibles
+        target_audience: Audience cible
+        priority: Priorité
+        priority_help: Les popups avec une priorité plus élevée sont affichés en premier.
+    flash:
+        campaign_created: La campagne popup a été créée avec succès.
+        campaign_updated: La campagne popup a été mise à jour avec succès.

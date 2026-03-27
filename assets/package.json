@@ -1,0 +1,12 @@
+{
+    "name": "@abderrahimghazali/sylius-popup-plugin",
+    "symfony": {
+        "controllers": {
+            "popup": {
+                "main": "controllers/popup-controller.js",
+                "fetch": "eager",
+                "enabled": true
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-popup_admin_popup_campaign:
+popup_admin_campaign:
     resource: |
         alias: popup.campaign
         section: admin
@@ -13,7 +13,7 @@ popup_admin_popup_campaign:
     type: sylius.resource
     prefix: /popup-campaigns
 
-popup_admin_popup_campaign_create:
+popup_admin_campaign_create:
     path: /popup-campaigns/new
     controller: Abderrahim\SyliusPopupPlugin\Controller\Admin\PopupCampaignController::createAction
     methods: [GET, POST]
@@ -21,7 +21,7 @@ popup_admin_popup_campaign_create:
         _sylius:
             permission: true
 
-popup_admin_popup_campaign_update:
+popup_admin_campaign_update:
     path: /popup-campaigns/{id}/edit
     controller: Abderrahim\SyliusPopupPlugin\Controller\Admin\PopupCampaignController::updateAction
     methods: [GET, PUT, POST]
@@ -29,7 +29,7 @@ popup_admin_popup_campaign_update:
         _sylius:
             permission: true
 
-popup_admin_popup_campaign_toggle:
+popup_admin_campaign_toggle:
     path: /popup-campaigns/{id}/toggle
     controller: Abderrahim\SyliusPopupPlugin\Controller\Admin\PopupCampaignController::toggleAction
     methods: [PATCH]

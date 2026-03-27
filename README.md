@@ -7,6 +7,17 @@ Exit-intent & engagement popup system for Sylius 2.x stores, fully managed from 
 ![Symfony](https://img.shields.io/badge/Symfony-7.x-black)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
+## Screenshots
+
+### Admin — Campaign List
+![Admin Grid](docs/images/admin-grid.png)
+
+### Admin — Edit Campaign (Tabbed Form)
+![Admin Form](docs/images/admin-form.png)
+
+### Shop — Modal Popup (Exit Intent)
+![Popup Modal](docs/images/popup-modal.png)
+
 ## Features
 
 - **Multiple popup campaigns** — create, enable/disable, and prioritize from the admin panel

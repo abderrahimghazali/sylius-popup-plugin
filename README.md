@@ -15,6 +15,7 @@
 </p>
 
 <p align="center">
+    <a href="https://github.com/abderrahimghazali/sylius-popup-plugin/actions/workflows/ci.yaml"><img src="https://github.com/abderrahimghazali/sylius-popup-plugin/actions/workflows/ci.yaml/badge.svg" alt="CI"/></a>
     <a href="https://packagist.org/packages/abderrahimghazali/sylius-popup-plugin"><img src="https://img.shields.io/packagist/v/abderrahimghazali/sylius-popup-plugin.svg" alt="Latest Version"/></a>
     <a href="https://packagist.org/packages/abderrahimghazali/sylius-popup-plugin"><img src="https://img.shields.io/packagist/php-v/abderrahimghazali/sylius-popup-plugin.svg" alt="PHP Version"/></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"/></a>

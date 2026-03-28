@@ -13,9 +13,8 @@ use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\RateLimit;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\RateLimiter\SlidingWindowLimiter;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
@@ -25,7 +24,7 @@ final class PopupSubscribeControllerTest extends TestCase
     private RepositoryInterface&MockObject $repository;
     private EventDispatcherInterface&MockObject $eventDispatcher;
     private ValidatorInterface&MockObject $validator;
-    private RateLimiterFactory&MockObject $limiterFactory;
+    private LimiterInterface&MockObject $limiter;
     private PopupSubscribeController $controller;
 
     protected function setUp(): void
@@ -33,13 +32,13 @@ final class PopupSubscribeControllerTest extends TestCase
         $this->repository = $this->createMock(RepositoryInterface::class);
         $this->eventDispatcher = $this->createMock(EventDispatcherInterface::class);
         $this->validator = $this->createMock(ValidatorInterface::class);
-        $this->limiterFactory = $this->createMock(RateLimiterFactory::class);
+        $this->limiter = $this->createMock(LimiterInterface::class);
 
         $this->controller = new PopupSubscribeController(
             $this->repository,
             $this->eventDispatcher,
             $this->validator,
-            $this->limiterFactory,
+            $this->limiter,
         );
     }
 
@@ -119,9 +118,6 @@ final class PopupSubscribeControllerTest extends TestCase
         $rateLimit = $this->createMock(RateLimit::class);
         $rateLimit->method('isAccepted')->willReturn($accepted);
 
-        $limiter = $this->createMock(SlidingWindowLimiter::class);
-        $limiter->method('consume')->willReturn($rateLimit);
-
-        $this->limiterFactory->method('create')->willReturn($limiter);
+        $this->limiter->method('consume')->willReturn($rateLimit);
     }
 }

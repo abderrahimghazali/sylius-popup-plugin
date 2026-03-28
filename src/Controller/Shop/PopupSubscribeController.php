@@ -11,6 +11,7 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\RateLimiter\LimiterInterface;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
 use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -18,6 +19,8 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class PopupSubscribeController
 {
+    private readonly LimiterInterface|RateLimiterFactory $rateLimiter;
+
     /**
      * @param RepositoryInterface<PopupCampaignInterface> $popupCampaignRepository
      */
@@ -25,14 +28,18 @@ final class PopupSubscribeController
         private readonly RepositoryInterface $popupCampaignRepository,
         private readonly EventDispatcherInterface $eventDispatcher,
         private readonly ValidatorInterface $validator,
-        private readonly RateLimiterFactory $popupSubscribeLimiter,
+        LimiterInterface|RateLimiterFactory $popupSubscribeLimiter,
     ) {
+        $this->rateLimiter = $popupSubscribeLimiter;
     }
 
     public function __invoke(Request $request, int $id): Response
     {
         // Rate limiting
-        $limiter = $this->popupSubscribeLimiter->create($request->getClientIp() ?? 'unknown');
+        $limiter = $this->rateLimiter instanceof RateLimiterFactory
+            ? $this->rateLimiter->create($request->getClientIp() ?? 'unknown')
+            : $this->rateLimiter;
+
         if (false === $limiter->consume()->isAccepted()) {
             return new JsonResponse(
                 ['error' => 'Too many requests. Please try again later.'],

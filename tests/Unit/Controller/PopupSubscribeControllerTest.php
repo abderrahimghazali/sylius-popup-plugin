@@ -7,7 +7,7 @@ namespace Abderrahim\SyliusPopupPlugin\Tests\Unit\Controller;
 use Abderrahim\SyliusPopupPlugin\Controller\Shop\PopupSubscribeController;
 use Abderrahim\SyliusPopupPlugin\Entity\PopupCampaign;
 use Abderrahim\SyliusPopupPlugin\Entity\PopupCampaignInterface;
-use Abderrahim\SyliusPopupPlugin\Service\PopupRenderer;
+use Abderrahim\SyliusPopupPlugin\Service\PopupRendererInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
@@ -31,7 +31,7 @@ final class PopupSubscribeControllerTest extends TestCase
     private ValidatorInterface&MockObject $validator;
     private CsrfTokenManagerInterface&MockObject $csrfTokenManager;
     private CacheInterface&MockObject $cache;
-    private PopupRenderer&MockObject $popupRenderer;
+    private PopupRendererInterface&MockObject $popupRenderer;
     private LimiterInterface&MockObject $limiter;
     private PopupSubscribeController $controller;
 
@@ -42,7 +42,7 @@ final class PopupSubscribeControllerTest extends TestCase
         $this->validator = $this->createMock(ValidatorInterface::class);
         $this->csrfTokenManager = $this->createMock(CsrfTokenManagerInterface::class);
         $this->cache = $this->createMock(CacheInterface::class);
-        $this->popupRenderer = $this->createMock(PopupRenderer::class);
+        $this->popupRenderer = $this->createMock(PopupRendererInterface::class);
         $this->limiter = $this->createMock(LimiterInterface::class);
 
         $this->controller = new PopupSubscribeController(

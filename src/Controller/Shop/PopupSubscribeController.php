@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Abderrahim\SyliusPopupPlugin\Controller\Shop;
 
 use Abderrahim\SyliusPopupPlugin\Entity\PopupCampaignInterface;
-use Abderrahim\SyliusPopupPlugin\Service\PopupRenderer;
+use Abderrahim\SyliusPopupPlugin\Service\PopupRendererInterface;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
@@ -35,7 +35,7 @@ final class PopupSubscribeController
         private readonly ValidatorInterface $validator,
         private readonly CsrfTokenManagerInterface $csrfTokenManager,
         private readonly CacheInterface $cache,
-        private readonly PopupRenderer $popupRenderer,
+        private readonly PopupRendererInterface $popupRenderer,
         LimiterInterface|RateLimiterFactory $popupSubscribeLimiter,
     ) {
         $this->rateLimiter = $popupSubscribeLimiter;

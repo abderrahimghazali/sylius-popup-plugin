@@ -37,6 +37,9 @@ services:
             $cache: '@cache.app'
 
     # PopupRenderer service
+    Abderrahim\SyliusPopupPlugin\Service\PopupRendererInterface:
+        alias: Abderrahim\SyliusPopupPlugin\Service\PopupRenderer
+
     Abderrahim\SyliusPopupPlugin\Service\PopupRenderer:
         arguments:
             $popupCampaignRepository: '@popup.repository.campaign'

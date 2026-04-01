@@ -13,7 +13,7 @@ use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-final class PopupRenderer
+final class PopupRenderer implements PopupRendererInterface
 {
     public function __construct(
         private readonly PopupCampaignRepositoryInterface $popupCampaignRepository,

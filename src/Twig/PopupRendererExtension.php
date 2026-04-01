@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Abderrahim\SyliusPopupPlugin\Twig;
 
-use Abderrahim\SyliusPopupPlugin\Service\PopupRenderer;
+use Abderrahim\SyliusPopupPlugin\Service\PopupRendererInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
@@ -12,7 +12,7 @@ use Twig\TwigFunction;
 final class PopupRendererExtension extends AbstractExtension
 {
     public function __construct(
-        private readonly PopupRenderer $popupRenderer,
+        private readonly PopupRendererInterface $popupRenderer,
     ) {
     }
 

@@ -31,6 +31,9 @@ class PopupCampaignRepository extends EntityRepository implements PopupCampaignR
             ->setParameter('targetAudience', $targetAudience->value)
             ->setParameter('everyone', TargetAudience::Everyone->value);
 
+        // Limit to prevent popup flooding
+        $qb->setMaxResults(3);
+
         return $qb->getQuery()->getResult();
     }
 }

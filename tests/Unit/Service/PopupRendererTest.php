@@ -13,18 +13,27 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 final class PopupRendererTest extends TestCase
 {
     private PopupCampaignRepositoryInterface&MockObject $repository;
     private Security&MockObject $security;
+    private RequestStack&MockObject $requestStack;
+    private SessionInterface&MockObject $session;
     private PopupRenderer $renderer;
 
     protected function setUp(): void
     {
         $this->repository = $this->createMock(PopupCampaignRepositoryInterface::class);
         $this->security = $this->createMock(Security::class);
-        $this->renderer = new PopupRenderer($this->repository, $this->security);
+        $this->requestStack = $this->createMock(RequestStack::class);
+        $this->session = $this->createMock(SessionInterface::class);
+        $this->requestStack->method('getSession')->willReturn($this->session);
+        $this->session->method('get')->with('_popup_shown', [])->willReturn([]);
+
+        $this->renderer = new PopupRenderer($this->repository, $this->security, $this->requestStack);
     }
 
     public function testItReturnsMatchingPopupsForGuestOnProductPage(): void

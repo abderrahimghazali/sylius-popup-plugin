@@ -24,6 +24,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\PositiveOrZero;
 use Symfony\Component\Validator\Constraints\Range;
+use Symfony\Component\Validator\Constraints\Regex;
 
 final class PopupCampaignType extends AbstractType
 {
@@ -60,6 +61,12 @@ final class PopupCampaignType extends AbstractType
             ->add('ctaUrl', UrlType::class, [
                 'label' => 'popup.form.cta_url',
                 'required' => false,
+                'constraints' => [
+                    new Regex(
+                        pattern: '/^https?:\/\//i',
+                        message: 'Only http and https URLs are allowed.',
+                    ),
+                ],
             ])
             ->add('discountCode', TextType::class, [
                 'label' => 'popup.form.discount_code',

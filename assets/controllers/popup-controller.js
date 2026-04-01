@@ -8,10 +8,11 @@ export default class extends Controller {
         scrollDepth: { type: Number, default: 50 },
         showFrequency: String,
         subscribeUrl: String,
+        csrfToken: String,
         hasCart: { type: Boolean, default: false },
     };
 
-    static targets = ['overlay', 'emailInput', 'emailForm', 'thankYou', 'copyFeedback'];
+    static targets = ['overlay', 'emailInput', 'emailForm', 'thankYou', 'copyFeedback', 'honeypot'];
 
     connect() {
         if (this._alreadyShown()) {
@@ -57,13 +58,21 @@ export default class extends Controller {
         const email = this.emailInputTarget.value.trim();
         if (!email) return;
 
+        const payload = { email };
+
+        // Include honeypot value (should be empty for real users)
+        if (this.hasHoneypotTarget) {
+            payload.website = this.honeypotTarget.value;
+        }
+
         fetch(this.subscribeUrlValue, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
+                'X-CSRF-Token': this.csrfTokenValue,
             },
-            body: JSON.stringify({ email }),
+            body: JSON.stringify(payload),
         })
             .then((response) => response.json())
             .then((data) => {

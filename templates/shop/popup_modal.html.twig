@@ -6,6 +6,7 @@
     data-abderrahimghazali--sylius-popup-plugin--popup-scroll-depth-value="{{ popup.triggerScrollDepth }}"
     data-abderrahimghazali--sylius-popup-plugin--popup-show-frequency-value="{{ popup.showFrequency.value }}"
     data-abderrahimghazali--sylius-popup-plugin--popup-subscribe-url-value="{{ path('popup_shop_subscribe', {id: popup.id}) }}"
+    data-abderrahimghazali--sylius-popup-plugin--popup-csrf-token-value="{{ csrf_token('popup_subscribe') }}"
     data-abderrahimghazali--sylius-popup-plugin--popup-has-cart-value="{{ has_cart ? 'true' : 'false' }}"
 >
     <div
@@ -57,6 +58,16 @@
                         placeholder="{{ 'popup.ui.email_placeholder'|trans }}"
                         required
                         data-abderrahimghazali--sylius-popup-plugin--popup-target="emailInput"
+                    />
+                    {# Honeypot — hidden from real users, bots will fill it #}
+                    <input
+                        type="text"
+                        name="website"
+                        autocomplete="off"
+                        tabindex="-1"
+                        aria-hidden="true"
+                        style="position:absolute;left:-9999px;opacity:0;height:0;width:0;"
+                        data-abderrahimghazali--sylius-popup-plugin--popup-target="honeypot"
                     />
                     <button
                         type="submit"
